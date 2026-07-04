@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notícias do Dia — Crédito Pessoal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green: #1C9A5B;
+    --green-dark: #157a48;
+    --green-pale: #EAF7EF;
+    --ink: #16212B;
+    --ink-soft: #4A5560;
+    --gray-bg: #F6F7F9;
+    --border: #E4E7EB;
+    --white: #FFFFFF;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    font-family:'Inter', sans-serif;
+    color:var(--ink);
+    background:var(--white);
+    line-height:1.6;
+  }
+  h1,h2,h3{ font-family:'Poppins', sans-serif; }
+  a{ color:inherit; text-decoration:none; }
+  img{ max-width:100%; display:block; }
+
+  /* HEADER */
+  header.site{
+    border-bottom:1px solid var(--border);
+    padding:18px 32px;
+  }
+  .header-inner{
+    max-width:1180px; margin:0 auto;
+    display:flex; align-items:center; justify-content:space-between;
+    flex-wrap:wrap; gap:12px;
+  }
+  .logo{ font-family:'Poppins', sans-serif; font-weight:800; font-size:1.3rem; letter-spacing:.5px;}
+  .logo span{ color:var(--green); }
+  nav.main-nav{ display:flex; align-items:center; gap:28px; font-size:.88rem; font-weight:600; color:var(--ink); }
+  nav.main-nav .sep{ color:var(--border); }
+  .search-icon{ width:18px; height:18px; opacity:.7; }
+
+  /* DISCLAIMER TOP */
+  .top-disclaimer{
+    text-align:center; font-size:.82rem; color:var(--ink-soft);
+    padding:14px 20px; max-width:900px; margin:0 auto;
+  }
+
+  /* ARTICLE HEADER */
+  .article-wrap{ max-width:1180px; margin:0 auto; padding:0 24px 60px; }
+  .eyebrow{
+    color:var(--green); font-weight:700; font-size:.82rem;
+    letter-spacing:.6px; margin-bottom:10px;
+  }
+  h1.headline{
+    font-size:2.3rem; font-weight:700; line-height:1.18;
+    max-width:760px; margin-bottom:16px; color:var(--ink);
+  }
+  .dek{ font-size:1.05rem; color:var(--ink-soft); max-width:640px; margin-bottom:22px; }
+  .byline{ display:flex; align-items:center; gap:12px; margin-bottom:28px; }
+  .byline .avatar{
+    width:44px; height:44px; border-radius:50%;
+    background:linear-gradient(135deg,#f2c9c0,#e8a898);
+    display:flex; align-items:center; justify-content:center;
+    font-weight:700; color:#8a4a3a; font-size:1rem;
+  }
+  .byline .meta{ font-size:.85rem; color:var(--ink-soft); }
+  .byline .meta strong{ display:block; color:var(--ink); font-size:.92rem; font-weight:700; }
+
+  /* HERO */
+  .hero{
+    border-radius:14px; overflow:hidden;
+    box-shadow:0 8px 24px rgba(20,30,40,.08);
+    line-height:0;
+  }
+  .hero-img{ width:100%; height:auto; display:block; }
+
+  /* BODY */
+  .body-copy{ max-width:760px; margin:44px auto 0; }
+  .body-copy p{ margin-bottom:18px; color:var(--ink); font-size:1rem; }
+  .body-copy p.strong-line{ font-weight:700; }
+  h2.section-title{ font-size:1.5rem; font-weight:700; margin:36px 0 14px; }
+
+  /* FEATURE CARDS */
+  .feature-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:18px;
+    margin:22px 0 44px;
+  }
+  .feature-card{
+    border:1px solid var(--border); border-radius:12px; padding:22px 18px;
+    background:var(--white);
+  }
+  .feature-icon{
+    width:40px; height:40px; border-radius:10px; background:var(--green-pale);
+    display:flex; align-items:center; justify-content:center; margin-bottom:14px;
+  }
+  .feature-icon svg{ width:20px; height:20px; color:var(--green); }
+  .feature-card h4{ font-size:.98rem; font-weight:700; margin-bottom:8px; line-height:1.3; }
+  .feature-card p{ font-size:.87rem; color:var(--ink-soft); }
+
+  /* WHO CAN APPLY */
+  .who-row{
+    display:flex; align-items:center; gap:0; margin:26px 0 34px;
+    border:1px solid var(--border); border-radius:12px; overflow:hidden;
+  }
+  .who-item{
+    flex:1; display:flex; align-items:center; gap:14px; padding:20px 24px;
+  }
+  .who-item .icon{ width:34px; height:34px; color:var(--green); flex:0 0 auto; }
+  .who-item span{ font-size:.92rem; color:var(--ink); font-weight:500; }
+  .who-divider{ width:1px; align-self:stretch; background:var(--border); }
+
+  /* CALLOUT */
+  .callout{
+    background:var(--green-pale); border:1px solid #cdeedb; border-radius:12px;
+    padding:22px 24px; margin-bottom:36px; display:flex; gap:14px;
+  }
+  .callout .badge{
+    flex:0 0 auto; width:26px; height:26px; border-radius:50%; background:var(--green);
+    color:var(--white); display:flex; align-items:center; justify-content:center;
+    font-weight:800; font-size:.95rem;
+  }
+  .callout h4{ font-size:1rem; font-weight:700; margin-bottom:6px; }
+  .callout p{ font-size:.92rem; color:var(--ink-soft); margin:0; }
+
+  /* CTA */
+  .cta-block{ text-align:center; margin:38px 0 30px; }
+  .cta-btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:10px;
+    background:var(--green); color:var(--white); font-weight:700; font-size:1.05rem;
+    padding:18px 30px; border-radius:10px; width:100%; max-width:700px;
+    box-shadow:0 6px 18px rgba(28,154,91,.28);
+    transition:background .15s ease, transform .15s ease;
+  }
+  .cta-btn:hover{ background:var(--green-dark); transform:translateY(-1px); }
+  .cta-btn svg{ width:20px; height:20px; }
+  .cta-sub{
+    margin-top:14px; font-size:.85rem; color:var(--ink-soft);
+    display:flex; align-items:center; justify-content:center; gap:8px;
+  }
+  .cta-sub svg{ width:16px; height:16px; color:var(--green); }
+
+  /* FOOTER */
+  footer.site{
+    border-top:1px solid var(--border); margin-top:20px; padding:26px 24px 40px;
+    text-align:center;
+  }
+  footer.site p{
+    max-width:820px; margin:0 auto 14px; font-size:.8rem; color:var(--ink-soft);
+  }
+  footer.site .links{ font-size:.85rem; font-weight:600; }
+  footer.site .links a{ color:var(--ink); }
+  footer.site .links .sep{ color:var(--border); margin:0 8px; }
+
+  @media (max-width:860px){
+    .feature-grid{ grid-template-columns:repeat(2,1fr); }
+    .who-row{ flex-direction:column; }
+    .who-divider{ width:100%; height:1px; }
+    h1.headline{ font-size:1.7rem; }
+    nav.main-nav{ display:none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="header-inner">
+    <div class="logo">NOTÍCIAS <span>DO DIA</span></div>
+    <nav class="main-nav">
+      <a href="#">ÚLTIMAS NOTÍCIAS</a><span class="sep">|</span>
+      <a href="#">ECONOMIA</a><span class="sep">|</span>
+      <a href="#">FINANÇAS</a><span class="sep">|</span>
+      <a href="#">TECNOLOGIA</a>
+    </nav>
+    <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+  </div>
+</header>
+
+<p class="top-disclaimer">Este conteúdo é informativo. As condições podem variar de acordo com a análise de crédito de cada instituição financeira.</p>
+
+<main class="article-wrap">
+
+  <div class="eyebrow">CRÉDITO PESSOAL</div>
+  <h1 class="headline">Brasileiros estão descobrindo novas formas de acessar crédito online em poucos minutos</h1>
+  <p class="dek">Entenda como funciona o processo e veja como a digitalização de instituições tradicionais facilita o acesso para quem precisa de dinheiro rápido.</p>
+
+  <div class="byline">
+    <div class="avatar">JC</div>
+    <div class="meta">
+      <strong>Por Juliana Castro</strong>
+      Atualizado há 5 minutos &nbsp;•&nbsp; 4 min de leitura
+    </div>
+  </div>
+
+  <section class="hero">
+    <img src="assets/hero-credito.png" alt="Mulher sorrindo usando celular no sofá — Crédito pessoal online e rápido, veja como funciona" class="hero-img">
+  </section>
+
+  <div class="body-copy">
+    <p>Nos últimos meses, cresceu no Brasil a busca por alternativas de crédito pessoal feitas totalmente pela internet. Segundo dados do mercado financeiro, cada vez mais pessoas estão optando por soluções digitais por conta da praticidade e rapidez na análise de perfil.</p>
+
+    <p>Com a modernização do sistema bancário, grandes instituições financeiras tradicionais passaram a integrar tecnologia de ponta para facilitar a vida do cidadão comum. Hoje, já é possível simular propostas e buscar aprovação sem enfrentar filas ou burocracias desnecessárias.</p>
+
+    <p class="strong-line">Mas afinal, como isso funciona na prática?</p>
+
+    <h2 class="section-title">O que está acontecendo no mercado</h2>
+    <p>Hoje, diversas instituições financeiras e plataformas digitais integradas a correspondentes bancários passam a oferecer um ecossistema simplificado:</p>
+
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="12" height="18" rx="2"/><line x1="8" y1="8" x2="12" y2="8"/><line x1="8" y1="12" x2="12" y2="12"/><circle cx="18" cy="17" r="3"/></svg></div>
+        <h4>Solicitação 100% online</h4>
+        <p>Todo o processo é feito pela internet, de forma simples e segura, direto do celular.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg></div>
+        <h4>Análise de perfil automatizada</h4>
+        <p>A resposta com as opções disponíveis pode sair em poucos minutos, sem burocracia excessiva.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="18" height="12" rx="2"/><circle cx="12" cy="13" r="2.5"/></svg></div>
+        <h4>Depósito direto na conta</h4>
+        <p>Após a aprovação final do contrato, o dinheiro pode cair na sua conta rapidamente.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l7 3v6c0 5-3.5 7.5-7 9-3.5-1.5-7-4-7-9V6l7-3z"/><polyline points="9 12 11 14 15 10"/></svg></div>
+        <h4>Mais segurança e praticidade</h4>
+        <p>Seus dados são protegidos por criptografia e o acompanhamento é feito em tempo real.</p>
+      </div>
+    </div>
+
+    <h2 class="section-title">Quem pode solicitar</h2>
+    <p>As condições de taxas e prazos podem variar de acordo com o perfil do solicitante e as regras do banco, mas geralmente as análises levam em conta alguns pontos importantes:</p>
+
+    <div class="who-row">
+      <div class="who-item">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 15a8 8 0 0 1 16 0"/><line x1="12" y1="15" x2="15" y2="10"/><circle cx="12" cy="15" r="1.3" fill="currentColor" stroke="none"/></svg>
+        <span>Score de crédito nos órgãos de proteção</span>
+      </div>
+      <div class="who-divider"></div>
+      <div class="who-item">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="11" r="2"/><line x1="13" y1="10" x2="18" y2="10"/><line x1="13" y1="13" x2="18" y2="13"/></svg>
+        <span>Dados cadastrais básicos atualizados</span>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="badge">!</div>
+      <div>
+        <h4>Importante entender:</h4>
+        <p>Nem todas as pessoas são aprovadas automaticamente. O sistema financeiro avalia o perfil de cada solicitante antes de liberar qualquer tipo de crédito, garantindo mais segurança para ambas as partes. A vantagem de utilizar canais digitais parceiros é a velocidade em encontrar qual linha de crédito se encaixa melhor no seu bolso hoje.</p>
+      </div>
+    </div>
+
+    <h2 class="section-title">Como ver as opções disponíveis para você</h2>
+    <p>Atualmente, existem plataformas integradas que permitem consultar ofertas de crédito disponíveis para o seu perfil de forma simples e rápida.</p>
+    <p>Basta preencher algumas informações básicas para visualizar as possibilidades reais e simular valores sem compromisso.</p>
+
+    <div class="cta-block">
+      <a href="#" class="cta-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg>
+        VER OPÇÕES DE CRÉDITO DISPONÍVEIS AGORA
+      </a>
+      <p class="cta-sub">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l7 3v6c0 5-3.5 7.5-7 9-3.5-1.5-7-4-7-9V6l7-3z"/></svg>
+        É rápido, seguro e não compromete seu score.
+      </p>
+    </div>
+
+  </div>
+</main>
+
+<footer class="site">
+  <p>Este conteúdo tem caráter puramente informativo e não representa uma oferta direta de crédito. A aprovação e as condições finais estão estritamente sujeitas à análise interna das instituições financeiras parceiras e correspondentes bancários autorizados.</p>
+  <div class="links">
+    <a href="#">Política de Privacidade</a><span class="sep">|</span><a href="#">Termos de Uso</a>
+  </div>
+</footer>
+
+</body>
+</html>
